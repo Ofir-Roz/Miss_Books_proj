@@ -207,7 +207,7 @@ input:focus {
 
 
 a.active {
-	color: rgb(241, 212, 241);
+	color: rgb(249, 255, 61);
 	font-weight: 600;
 	text-decoration: underline;
 }
