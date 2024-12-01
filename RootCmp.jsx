@@ -5,6 +5,7 @@ import { AppHeader } from "./cmps/AppHeader.jsx"
 import { HomePage } from "./pages/HomePage.jsx"
 import { AboutUs } from "./pages/AboutUs.jsx"
 import { BookIndex } from "./pages/BookIndex.jsx"
+import { BookDetails } from "./pages/BookDetails.jsx"
 
 
 const Router = ReactRouterDOM.HashRouter
@@ -25,6 +26,7 @@ export function RootCmp() {
                             <Route path="/about/vision" element={<Vision />} />
                         </Route>
                         <Route path="/book" element={<BookIndex />} />
+                        <Route path="/book/:bookId" element={<BookDetails />} />
                     </Routes>
                 </main>
             </section>
