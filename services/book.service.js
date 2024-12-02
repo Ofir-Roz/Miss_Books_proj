@@ -55,8 +55,11 @@ function getEmptyBook(title = '', amount = 0, currencyCode = 'USD', isOnSale = f
     }
 }
 
-function getDefaultFilter(filterBy = { title: '', listPrice: 0 }) {
-    return { title: filterBy.title, listPrice: filterBy.listPrice }
+function getDefaultFilter(filterBy = { title: '', listPrice: { amount: 0 } }) {
+    return { 
+        title: filterBy.title,
+        listPrice: filterBy.listPrice.amount 
+    }
 }
 
 function _createBooks() {
