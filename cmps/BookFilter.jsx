@@ -1,62 +1,41 @@
-import { bookService } from "../services/book.service.js";
-import { debounce } from "../services/util.service.js";
 
-const { useState, useEffect, useRef } = React
+const { useState, useEffect } = React
 
-export function BookFilter() {
+export function BookFilter({ defaultFilter, onSetFilter }) {
+    const [filterBy, setFilterBy] = useState(defaultFilter)
 
+    useEffect(() => {
+        onSetFilter(filterBy)
+    }, [filterBy])
+
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        switch (target.type) {
+            case 'number':
+                value = +target.value
+                break
+        }
+        setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
+    }
+
+    function onSubmitFilter(ev) {
+        ev.preventDefault()
+        console.log('filterBy:', filterBy)
+    }
+
+    const { title, minPrice } = filterBy
     return (
         <section className="book-filter">
             <h2>Filter Our Books</h2>
-            <form >
+            <form onSubmit={onSubmitFilter}>
                 <label htmlFor="title">Title</label>
-                <input type="text" />
+                <input value={title} onChange={handleChange} type="text" name="title" id="title" />
 
-                <label htmlFor="price">Price</label>
-                <input type="number" />
+                <label htmlFor="minPrice">Min Price</label>
+                <input value={minPrice} onChange={handleChange} type="number" name="minPrice" id="minPrice" />
 
                 <button>Submit</button>
             </form>
         </section>
     )
 }
-
-
-// const [filterByToEdit, setFilterByToEdit] = useState(defaultFilter)
-// const onSetFilterDebounce = useRef(debounce(onSetFilter)).current
-
-// useEffect(() => {
-//     onSetFilterDebounce(filterByToEdit)
-// }, [filterByToEdit])
-
-// function handleChange({ target }) {
-//     let { value, name: field } = target
-//     switch (target.type) {
-//         case 'range':
-//         case 'number':
-//             value = +target.value
-//             break
-//         case 'checkbox':
-//             value = target.checked
-//             break
-//     }
-//     if (field === 'listPrice')
-//         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: { amount: value } }))
-//     else
-//         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
-// }
-
-// // function handleTxtChange(ev) {
-// //     setFilterByToEdit(filter => ({ ...filter, txt: ev.target.value }))
-// // }
-
-// // function handleMinSpeedChange(ev) {
-// //     setFilterByToEdit(filter => ({ ...filter, minSpeed: +ev.target.value }))
-// // }
-
-// function onSubmitFilter(ev) {
-//     ev.preventDefault()
-//     onSetFilter(filterByToEdit)
-// }
-
-// const { title, listPrice } = filterByToEdit
