@@ -22,8 +22,8 @@ function query(filterBy = {}) {
             const regex = new RegExp(filterBy.title, 'i')
             books = books.filter(book => regex.test(book.title))
         }
-        if (filterBy.listPrice) {
-            books = books.filter(book => book.listPrice.amount <= filterBy.listPrice)
+        if (filterBy.minPrice) {
+            books = books.filter(book => book.listPrice.amount >= filterBy.minPrice)
         }
         return books
     })
@@ -55,12 +55,8 @@ function getEmptyBook(title = '', amount = 0, currencyCode = 'USD', isOnSale = f
     }
 }
 
-function getDefaultFilter(filterBy = { title: '', listPrice: { amount : 0 } }) {
-    console.log(filterBy)
-    return { 
-        title: filterBy.title,
-         listPrice: filterBy.listPrice.amount 
-        }
+function getDefaultFilter() {
+    return { title: '', minPrice: '' }
 }
 
 function _createBooks() {
