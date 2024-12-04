@@ -8,7 +8,7 @@ export function BookList({ books }) {
                 <li key={book.id}>
                     <BookPreview book={book} />
                     <section>
-                        <button><Link to={`/book/${book.id}`}>Details</Link></button>
+                        <Link to={`/book/${book.id}`}><button>Details</button></Link>
                     </section>
                 </li>
             )}
