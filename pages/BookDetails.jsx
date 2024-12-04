@@ -33,7 +33,7 @@ export function BookDetails(){
             <h1>Book Title: {book.title}</h1>
             <h1>Price: {book.listPrice.amount}</h1>
             <p>{book.description}</p>
-            <img src={`../assets/img/BooksImages/${utilService.getRandomIntInclusive(1, 20)}.jpg`} alt="book-image" />
+            <img src={`../assets/img/BooksImages/${book.imgNum}.jpg`} alt="book-image" />
             <button onClick={onBack}>Back</button>
         </section>
     )

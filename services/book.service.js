@@ -60,35 +60,34 @@ function getDefaultFilter() {
 }
 
 function _createBooks() {
-    let books = utilService.loadFromStorage(BOOK_KEY)
-    if (!books || !books.length) {
-        books = []
-        const demoBooks = [
-            {
-                id: utilService.makeId(),
-                title: "metus hendrerit",
-                description: "placerat nisi sodales suscipit tellus",
-                thumbnail: "http://coding-academy.org/books-photos/1.jpg",
-                listPrice: { amount: 109, currencyCode: "EUR", isOnSale: false }
-            },
-            {
-                id: utilService.makeId(),
-                title: "audu",
-                description: "lorem ipsum dolor sit amet",
-                thumbnail: "http://coding-academy.org/books-photos/2.jpg",
-                listPrice: { amount: 150, currencyCode: "USD", isOnSale: true }
-            },
-            {
-                id: utilService.makeId(),
-                title: "fiak",
-                description: "morbi aliquet sapien et ligula",
-                thumbnail: "http://coding-academy.org/books-photos/3.jpg",
-                listPrice: { amount: 90, currencyCode: "USD", isOnSale: false }
+    const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+    const books = []
+    var imgNumber
+    for (let i = 0; i < 20; i++) {
+        imgNumber = i + 1
+        const book = {
+            id: utilService.makeId(),
+            title: utilService.makeLorem(2),
+            subtitle: utilService.makeLorem(4),
+            authors: [
+                utilService.makeLorem(1)
+            ],
+            publishedDate: utilService.getRandomIntInclusive(1950, 2024),
+            description: utilService.makeLorem(150),
+            pageCount: utilService.getRandomIntInclusive(20, 600),
+            categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+            imgNum: imgNumber,
+            thumbnail: `http://coding-academy.org/books-photos/${imgNumber}.jpg`,
+            language: "en",
+            listPrice: {
+                amount: utilService.getRandomIntInclusive(80, 500),
+                currencyCode: "EUR",
+                isOnSale: Math.random() > 0.7
             }
-        ]
-        books.push(...demoBooks)
-        utilService.saveToStorage(BOOK_KEY, books)
+        }
+        books.push(book)
     }
+    utilService.saveToStorage(BOOK_KEY, books)
 }
 
 function _createBook(title, amount = 150, currencyCode = 'USD', isOnSale = false) {
