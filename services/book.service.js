@@ -60,8 +60,10 @@ function getDefaultFilter() {
 }
 
 function _createBooks() {
+    const books = JSON.parse(localStorage.getItem(BOOK_KEY)) || []
+    if (books.length) return
+
     const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-    const books = []
     var imgNumber
     for (let i = 0; i < 20; i++) {
         imgNumber = i + 1
@@ -88,14 +90,4 @@ function _createBooks() {
         books.push(book)
     }
     utilService.saveToStorage(BOOK_KEY, books)
-}
-
-function _createBook(title, amount = 150, currencyCode = 'USD', isOnSale = false) {
-    return {
-        id: utilService.makeId(),
-        title,
-        description: utilService.getLorem(20),
-        thumbnail: 'http://coding-academy.org/books-photos/default.jpg',
-        listPrice: { amount, currencyCode, isOnSale }
-    }
 }
