@@ -31,17 +31,35 @@ export function BookDetails() {
         return 'Light Reading'
     }
 
+    function getVintOrNewBudg(publishYear){
+        const currentYear = new Date().getFullYear();
+        if ((currentYear - publishYear) >= 10) return '- Vintage'
+        if ((currentYear - publishYear) <= 1) return '- New'
+    }
+
+    function getPriceinColor(price){
+        let style
+        if (price > 150) style = {color: 'red'}
+        if (price < 20) style = {color: 'green'}
+        return style
+    }
     
+    function isOnSale(isOnSale){
+        if (isOnSale)
+            return <h1 style={{color: 'blue'}}>On Sale!!</h1>
+    }
+
     if (!book) return <div>Details Loading...</div>
     return (
         <section className="book-details">
+            {isOnSale(book.listPrice.isOnSale)}
             <h1>{book.title}</h1>
             <h2>{book.subtitle}</h2>
             <h2>Author: {book.authors}</h2>
-            <h2>Price: {book.listPrice.amount} €</h2>
-            <h3>Published Year: {book.publishedDate}</h3>
+            <h2 style={getPriceinColor(book.listPrice.amount)}>Price: {book.listPrice.amount} €</h2>
+            <h3>From: {book.publishedDate} {getVintOrNewBudg(book.publishedDate)}</h3>
             <h4>Categories: {book.categories}</h4>
-            <h4>{book.pageCount} - {getReadingDifficult(book.pageCount)}</h4>
+            <h4><strong>{getReadingDifficult(book.pageCount)}</strong></h4>
 
             <p>{book.description}</p>
             <img src={`./assets/img/BooksImages/${book.imgNum}.jpg`} alt="book-image" />

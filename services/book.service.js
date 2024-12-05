@@ -61,6 +61,7 @@ function getDefaultFilter() {
 
 function _createBooks() {
     const books = JSON.parse(localStorage.getItem(BOOK_KEY)) || []
+    console.log(books)
     if (books.length) return
 
     const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
@@ -74,7 +75,7 @@ function _createBooks() {
             authors: [
                 utilService.makeLorem(1)
             ],
-            publishedDate: utilService.getRandomIntInclusive(1950, 2024),
+            publishedDate: utilService.getRandomIntInclusive(1960, 2024),
             description: utilService.makeLorem(150),
             pageCount: utilService.getRandomIntInclusive(20, 600),
             categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
@@ -82,7 +83,7 @@ function _createBooks() {
             thumbnail: `http://coding-academy.org/books-photos/${imgNumber}.jpg`,
             language: "en",
             listPrice: {
-                amount: utilService.getRandomIntInclusive(80, 500),
+                amount: utilService.getRandomIntInclusive(1, 300),
                 currencyCode: "EUR",
                 isOnSale: Math.random() > 0.7
             }
