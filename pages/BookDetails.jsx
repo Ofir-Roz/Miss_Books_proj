@@ -37,26 +37,14 @@ export function BookDetails() {
         if ((currentYear - publishYear) <= 1) return '- New'
     }
 
-    function getPriceInColor(price){
-        let style
-        if (price > 150) style = {color: 'red'}
-        if (price < 20) style = {color: 'green'}
-        return style
-    }
-    
-    function isOnSale(isOnSale){
-        if (isOnSale)
-            return <h1 style={{color: 'red'}}>On Sale!!</h1>
-    }
-
     if (!book) return <div>Details Loading...</div>
     return (
         <section className="book-details">
-            {isOnSale(book.listPrice.isOnSale)}
+            {bookService.isOnSale(book.listPrice.isOnSale)}
             <h1>{book.title}</h1>
             <h2>{book.subtitle}</h2>
             <h2>Author: {book.authors}</h2>
-            <h2 style={getPriceInColor(book.listPrice.amount)}>Price: {book.listPrice.amount} €</h2>
+            <h2>Price: <strong style={bookService.getPriceInColor(book.listPrice.amount)}>{book.listPrice.amount}</strong>{book.listPrice.currencyCode}</h2>
             <h3>From: {book.publishedDate} {getVintOrNewBudg(book.publishedDate)}</h3>
             <h4>Categories: {book.categories}</h4>
             <h4><strong>{getReadingDifficult(book.pageCount)}</strong></h4>

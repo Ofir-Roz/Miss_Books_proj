@@ -11,6 +11,8 @@ export const bookService = {
     save,
     getEmptyBook,
     getDefaultFilter,
+    isOnSale,
+    getPriceInColor
 }
 
 // For Debug (easy access from console):
@@ -84,11 +86,23 @@ function _createBooks() {
             language: "en",
             listPrice: {
                 amount: utilService.getRandomIntInclusive(1, 300),
-                currencyCode: "EUR",
+                currencyCode: "€",
                 isOnSale: Math.random() > 0.7
             }
         }
         books.push(book)
     }
     utilService.saveToStorage(BOOK_KEY, books)
+}
+
+function isOnSale(isOnSale){
+    if (isOnSale)
+        return <h1 style={{color: 'red'}}>On Sale!!</h1>
+}
+
+function getPriceInColor(price){
+    let style
+    if (price > 150) style = {color: 'red'}
+    if (price < 20) style = {color: 'green'}
+    return style
 }
