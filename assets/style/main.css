@@ -4,17 +4,15 @@
 
 /* Vars */
 :root {
-	--clr1: rgb(181, 156, 127);
-	--clr2: rgb(120, 99, 110);
+	--clr1: rgb(252, 213, 229);
+	--clr2: rgb(208, 150, 166);
 
-	--clr1bg: rgb(153, 166, 149);
-	--clr1bg-light: rgb(205, 221, 200);
-	--clr2bg: rgb(161, 213, 197);
-	--clr2bg-light: rgb(7, 73, 29);
-
+	--clr1bg: rgb(255, 245, 215);
+	--clr1bg-light: rgb(242, 249, 255);
+	
 	--gray1: rgb(240, 240, 240);
 	--gray2: rgb(155, 155, 155);
-	--gray3: rgb(44, 44, 44);
+	--gray3: rgb(53, 52, 52);
 }
 
 
@@ -27,6 +25,7 @@
 body {
 	margin: 0;
 	color: var(--gray3);
+	background-color: var(--clr1bg-light);
 }
 
 h1,
@@ -36,7 +35,7 @@ h4,
 h5,
 h6 {
 	margin: .5em 0 .5em;
-	font-family: 'Edu VIC WA NT Beginner', cursive;
+	font-family: 'Garamond', 'Baskerville', 'Times New Roman', serif;
 }
 
 p {
@@ -81,7 +80,7 @@ object {
 
 button {
 	cursor: pointer;
-	background-color: var(--clr2bg);
+	background-color: var(--clr1);
 	margin: 0.5em;
 	border: 0;
 	padding: 0.5em 0.8em;
@@ -89,13 +88,13 @@ button {
 }
 
 button:hover {
-	background-color: var(--clr2);
-	color: white;
-	transition: 0.3s;
+	background-color: var(--clr1bg-light);
+	color: var(--gray3);
+	transition: 0.4s;
 }
 
 input:focus {
-	background-color: var(--clr1bg);
+	background-color: var(--clr1bg-light);
 	transition: background-color 1s;
 }
 
@@ -196,7 +195,7 @@ input:focus {
 
 .app-header {
 	background-color: var(--clr1);
-	color: var(--clr2bg-light);
+	color: var(--gray3);
 
 }
 
@@ -217,7 +216,7 @@ input:focus {
 
 
 a.active {
-	color: rgb(0, 47, 168);
+	color: rgb(216, 114, 114);
 	font-weight: 600;
 	text-decoration: underline;
 }
@@ -234,9 +233,21 @@ a.active {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+	justify-content: space-between;
+	justify-content: space-evenly;
     align-items: center;
+	border-radius: 5%;
     background-color: var(--clr1);
     padding-block: 0.2em;
+}
+
+.book-list button {
+	background-color: var(--clr2);
+}
+
+.book-list button:hover {
+	background-color: var(--clr1bg-light);
+	color: var(--gray3);
 }
 
 .book-preview {
@@ -247,20 +258,21 @@ a.active {
     align-items: center;
 }
 
-.book-preview h4 {
+
+.book-preview h1, h2, h3, h4 {
     text-transform: capitalize;
-    color: black;
+    color: var(--gray3);
 }
 
 .book-preview img {
-    max-width: 175px;
+    max-width: 70%;
 }
 
 .book-filter {
-    background-color: var(--clr2bg);
+    background-color: var(--clr1bg);
     padding: 0.3rem 1em;
     margin-block: .5em;
-    
+    border-radius: 5%;
 }
 
 .book-filter form {
@@ -277,10 +289,13 @@ a.active {
     display: flex;
     flex-direction: column;
     align-items: center;
+	justify-content: space-between;
+	justify-content: space-around;
+	justify-content: space-evenly;
 }
 
 .book-details h1 {
-    color: black;
+    color: var(--gray3);
     font-size: 2em;
     
 }
@@ -290,7 +305,7 @@ a.active {
 }
 
 .book-details img {
-    max-width: 300px;
+    max-width: 75%;
     display: block;
     margin: auto;
 	margin-bottom: 20px;
@@ -301,6 +316,10 @@ a.active {
 	margin: auto;
 	border-radius: 30%;
 	margin-top: 5px;
+}
+
+.book-details button:hover {
+	background-color: var(--clr1bg);
 }
 
 @media (max-width: 720px) {
