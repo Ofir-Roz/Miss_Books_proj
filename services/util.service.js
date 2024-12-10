@@ -21,7 +21,19 @@ function makeId(length = 6) {
 }
 
 function makeLorem(size = 100) {
-    const words = ['The sky', 'above', 'the port', 'was', 'the color' ,'of nature', 'tuned', 'to', 'a live channel', 'All', 'this happened', 'more or less', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', 'a pleasure', 'to', 'burn']
+    const words = [
+        'The sky', 'above', 'the port', 'was', 'the color', 'of nature', 'tuned', 'to', 'a live channel',
+        'All', 'this happened', 'more or less', 'I', 'had', 'the story', 'bit by bit', 'from various people',
+        'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', 
+        'a pleasure', 'to', 'burn',
+        'shadows', 'lingered', 'in the corners', 'of thought', 'ancient', 'whispers', 'echoed', 'through the halls',
+        'the clock', 'ticked', 'in defiance', 'of silence', 'unspoken', 'promises', 'loomed', 'on the horizon',
+        'secrets', 'buried', 'beneath', 'layers', 'of memory', 'the wind', 'carried', 'fragments', 'of dreams',
+        'into the night', 'words', 'lost', 'to time', 'a fleeting', 'moment', 'etched', 'into', 'eternity',
+        'the forest', 'stood', 'like a sentinel', 'guarding', 'its mysteries', 'a world', 'unseen', 'and untouched',
+        'hearts', 'beating', 'in rhythm', 'with the unknown', 'fate', 'weaved', 'its threads', 'through', 'destinies',
+        'a single spark', 'ignited', 'the cosmos', 'and', 'everything', 'changed', 'forever'
+      ];
     var txt = ''
     while (size > 0) {
         size--
