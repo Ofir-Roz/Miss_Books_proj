@@ -97,7 +97,7 @@ function _createBooks() {
 
 function isOnSale(isOnSale){
     if (isOnSale)
-        return <h1 style={{color: 'red'}}>On Sale!!</h1>
+        return <h1 style={{color: 'red'}}>On Sale!</h1>
 }
 
 function getPriceInColor(price){

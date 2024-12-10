@@ -6,7 +6,7 @@ export function BookPreview({ book }) {
     const {title, authors, listPrice, imgNum} = book
     return (
         <article className="book-preview">
-            {isOnSale(listPrice.isOnSale)}
+            {(isOnSale(listPrice.isOnSale)) || <h1></h1>}
             <h2>{title}</h2>
             <h3>by {authors}</h3>
             <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
