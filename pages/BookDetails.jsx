@@ -25,32 +25,43 @@ export function BookDetails() {
         // navigate(-1)
     }
 
-    function getReadingDifficult(pageCount){
-        if (pageCount>=500) return 'Serious Reading'
-        else if (pageCount>=200) return 'Descent Reading'
+    function getReadingDifficult(pageCount) {
+        if (pageCount >= 500) return 'Serious Reading'
+        else if (pageCount >= 200) return 'Descent Reading'
         return 'Light Reading'
     }
 
-    function getVintOrNewBudg(publishYear){
+    function getVintOrNewBudg(publishYear) {
         const currentYear = new Date().getFullYear();
         if ((currentYear - publishYear) >= 10) return '- Vintage'
         if ((currentYear - publishYear) <= 1) return '- New'
     }
 
+
     if (!book) return <div>Details Loading...</div>
+    const {
+        title,
+        subtitle,
+        authors,
+        publishedDate,
+        categories,
+        pageCount,
+        description,
+        listPrice,
+        imgNum } = book
     return (
         <section className="book-details">
-            {bookService.isOnSale(book.listPrice.isOnSale)}
-            <h1>{book.title}</h1>
-            <h2>{book.subtitle}</h2>
-            <h2>Author: {book.authors}</h2>
-            <h2>Price: <strong style={bookService.getPriceInColor(book.listPrice.amount)}>{book.listPrice.amount}</strong>{book.listPrice.currencyCode}</h2>
-            <h3>From: {book.publishedDate} {getVintOrNewBudg(book.publishedDate)}</h3>
-            <h4>Categories: {book.categories}</h4>
-            <h4><strong>{getReadingDifficult(book.pageCount)}</strong></h4>
+            {bookService.isOnSale(listPrice.isOnSale)}
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
+            <h2>Author: {authors}</h2>
+            <h2>Price: <strong style={bookService.getPriceInColor(listPrice.amount)}>{listPrice.amount}</strong>{listPrice.currencyCode}</h2>
+            <h3>From: {publishedDate} {getVintOrNewBudg(publishedDate)}</h3>
+            <h4>Categories: {categories}</h4>
+            <h4><strong>{getReadingDifficult(pageCount)}</strong></h4>
 
-            <p>{book.description}</p>
-            <img src={`./assets/img/BooksImages/${book.imgNum}.jpg`} alt="book-image" />
+            <p>{description}</p>
+            <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
             <button onClick={onBack}>Back</button>
         </section>
     )
