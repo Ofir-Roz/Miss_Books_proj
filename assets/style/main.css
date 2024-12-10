@@ -267,6 +267,8 @@ a.active {
 
 .book-preview img {
     max-width: 70%;
+	border-radius: 5%;
+	box-shadow: 5px 4px 12px 5px rgb(0, 0, 0, 0.4);
 }
 
 .book-filter {
