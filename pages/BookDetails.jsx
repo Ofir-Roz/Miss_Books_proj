@@ -39,7 +39,7 @@ export function BookDetails() {
 
 
     const {isOnSale, getPriceInColor} = bookService
-    
+
     if (!book) return <div>Details Loading...</div>
     const {
         title,
@@ -54,16 +54,15 @@ export function BookDetails() {
     return (
         <section className="book-details">
             {isOnSale(listPrice.isOnSale)}
+            <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
             <h2>Author: {authors}</h2>
-            <h2>Price: <strong style={getPriceInColor(listPrice.amount)}>{listPrice.amount}</strong>{listPrice.currencyCode}</h2>
+            <h2>Price: <strong style={getPriceInColor(listPrice.amount)}>{listPrice.amount} {listPrice.currencyCode}</strong></h2>
             <h3>From: {publishedDate} {getVintOrNewBudg(publishedDate)}</h3>
             <h4>Categories: {categories}</h4>
             <h4><strong>{getReadingDifficult(pageCount)}</strong></h4>
-
             <p>{description}</p>
-            <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
             <button onClick={onBack}>Back</button>
         </section>
     )
