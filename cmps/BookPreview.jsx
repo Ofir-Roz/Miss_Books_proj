@@ -1,14 +1,16 @@
 import { bookService } from "../services/book.service.js"
 
 export function BookPreview({ book }) {
-
-    const {title, listPrice, imgNum} = book
+    
+    const {isOnSale, getPriceInColor} = bookService
+    const {title, authors, listPrice, imgNum} = book
     return (
         <article className="book-preview">
-            {bookService.isOnSale(listPrice.isOnSale)}
-            <h2>Title: {title}</h2>
-            <h2><strong style={bookService.getPriceInColor(listPrice.amount)}>{listPrice.amount} {listPrice.currencyCode}</strong></h2>
+            {isOnSale(listPrice.isOnSale)}
+            <h2>{title}</h2>
+            <h3>by {authors}</h3>
             <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
+            <h2><strong style={getPriceInColor(listPrice.amount)}>{listPrice.amount} {listPrice.currencyCode}</strong></h2>
         </article>
     )
 
