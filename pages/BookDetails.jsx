@@ -64,7 +64,11 @@ export function BookDetails() {
             <h4>Categories: {categories}</h4>
             <h4><strong>{getReadingDifficult(pageCount)}</strong></h4>
             <LongTxt txt={description} />
-            <button onClick={onBack}>Back</button>
+            <section className="book-details-button-container">
+                <button><Link to={`/book/${book.prevBookId}`}>Prev book</Link></button>
+                <button onClick={onBack}>Back</button>
+                <button><Link to={`/book/${book.nextBookId}`}>Next book</Link></button>
+            </section>
         </section>
     )
 }
