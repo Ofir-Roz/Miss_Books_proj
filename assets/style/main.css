@@ -9,7 +9,7 @@
 
 	--clr1bg: rgb(255, 245, 215);
 	--clr1bg-light: rgb(242, 249, 255);
-	
+
 	--gray1: rgb(240, 240, 240);
 	--gray2: rgb(155, 155, 155);
 	--gray3: rgb(53, 52, 52);
@@ -64,14 +64,14 @@ object {
 }
 
 .about {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
 }
 
 .about nav {
-    display: flex;
-    gap: 1em;
+	display: flex;
+	gap: 1em;
 }
 
 .about nav a {
@@ -188,7 +188,7 @@ input:focus {
 	text-align: center;
 }
 
-.home img{
+.home img {
 	width: 100%;
 }
 
@@ -222,23 +222,23 @@ a.active {
 }
 
 .book-list {
-    list-style: none;
-    padding: 15px 0 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+	list-style: none;
+	padding: 15px 0 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 10px;
 }
 
 .book-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 	justify-content: space-between;
 	justify-content: space-evenly;
-    align-items: center;
+	align-items: center;
 	border-radius: 5%;
-    background-color: var(--clr1);
-    padding-block: 0.2em;
+	background-color: var(--clr1);
+	padding-block: 0.2em;
 	box-shadow: 5px 15px 15px 5px rgb(0, 0, 0, 0.4);
 }
 
@@ -252,66 +252,66 @@ a.active {
 }
 
 .book-preview {
-    text-align: center;
-    padding: 0.3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	text-align: center;
+	padding: 0.3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 
-.book-preview h1, h2, h3, h4 {
-    text-transform: capitalize;
-    color: var(--gray3);
+.book-preview h1,
+h2,
+h3,
+h4 {
+	text-transform: capitalize;
 }
 
 .book-preview img {
-    max-width: 70%;
+	max-width: 70%;
 	border-radius: 5%;
 	box-shadow: 5px 4px 12px 5px rgb(0, 0, 0, 0.4);
 }
 
 .book-filter {
-    background-color: var(--clr1bg);
-    padding: 0.3rem 1em;
-    margin-block: .5em;
-    border-radius: 5%;
+	background-color: var(--clr1bg);
+	padding: 0.3rem 1em;
+	margin-block: .5em;
+	border-radius: 5%;
 	box-shadow: 5px 15px 15px 5px rgb(0, 0, 0, 0.4);
 }
 
 .book-filter form {
-    display: grid;
-    grid-template-columns: 100px 200px;
-    gap: .3em;
+	display: grid;
+	grid-template-columns: 100px 200px;
+	gap: .3em;
 }
 
 .book-filter form button {
-    margin-inline: 0
+	margin-inline: 0
 }
 
 .book-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: space-between;
 	justify-content: space-around;
 	justify-content: space-evenly;
 }
 
 .book-details h1 {
-    color: var(--gray3);
-    font-size: 2em;
-    
+	font-size: 2em;
 }
 
 .book-details h5 {
-    color: var(--clr2);
+	color: var(--clr2);
 }
 
 .book-details img {
-    max-width: 75%;
-    display: block;
-    margin: auto;
+	max-width: 75%;
+	display: block;
+	margin: auto;
 	margin-bottom: 20px;
 	border-radius: 5%;
 	box-shadow: 5px 15px 15px 5px rgb(0, 0, 0, 0.4);
@@ -330,8 +330,7 @@ a.active {
 
 .on-sale-sign {
 	position: relative;
-	right: 22%;
-	background-color: #ff0000;
+	background-color: #ff3535;
 	color: white;
 	font-size: 14px;
 	font-weight: bolder;
@@ -340,7 +339,39 @@ a.active {
 	z-index: 10;
 	box-shadow: 0px 1.5px 3px 0px black, 0px -1.5px 3px 0px black;
 	border-radius: 10px 10px 10px 10px;
-  }
+}
+
+.long-txt p.txt {
+	display: inline;
+	/* Ensure the entire paragraph behaves like inline text */
+	font-size: 1em;
+	font-weight: 550;
+	margin-bottom: 0.45em;
+}
+
+.long-txt p.txt button.show-txt-btn {
+	background: none;
+	margin: 0px 7px;
+	padding: 2px;
+	border: none;
+	color: rgba(0, 0, 0, 0.7);
+	background-color: var(--clr1);
+	font-size: 0.80em;
+	cursor: pointer;
+	display: inline;
+	/* Ensure button stays inline with the text */
+	vertical-align: baseline;
+	/* Aligns the button with text */
+	line-height: inherit;
+	border-radius: 4;
+	opacity: 70%;
+}
+
+.long-txt p.txt button.show-txt-btn:hover {
+	text-decoration: underline;
+	background-color: var(--clr1bg);
+	opacity: 100%;
+}
 
 @media (max-width: 720px) {
 	.app-header {
