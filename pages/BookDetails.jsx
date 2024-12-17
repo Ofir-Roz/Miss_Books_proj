@@ -51,11 +51,11 @@ export function BookDetails() {
         pageCount,
         description,
         listPrice,
-        imgNum } = book
+        thumbnail } = book
     return (
         <section className="book-details">
             {isOnSale(listPrice.isOnSale)}
-            <img src={`./assets/img/BooksImages/${imgNum}.jpg`} alt="book-image" />
+            <img src={thumbnail} alt="book-image" />
             <h1>{title}</h1>
             <h2>{subtitle}</h2>
             <h2>Author: {authors}</h2>

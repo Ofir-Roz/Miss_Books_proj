@@ -1,5 +1,6 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
+import books from './demo.books.js'
 
 const BOOK_KEY = 'bookDB'
 _createBooks()
@@ -95,35 +96,36 @@ function _setNextPrevBookId(book) {
 }
 
 function _createBooks() {
-    const books = JSON.parse(localStorage.getItem(BOOK_KEY)) || []
-    console.log(books)
-    if (books.length) return
+    var newBooks = JSON.parse(localStorage.getItem(BOOK_KEY)) || []
+    console.log(newBooks)
+    if (newBooks.length) return
 
-    const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-    var imgNumber
-    for (let i = 0; i < 20; i++) {
-        imgNumber = i + 1
-        const book = {
-            id: utilService.makeId(),
-            title: utilService.makeLorem(2),
-            subtitle: utilService.makeLorem(4),
-            authors: [
-                utilService.makeLorem(1)
-            ],
-            publishedDate: utilService.getRandomIntInclusive(1960, 2024),
-            description: utilService.makeLorem(150),
-            pageCount: utilService.getRandomIntInclusive(20, 600),
-            categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
-            imgNum: imgNumber,
-            thumbnail: `http://coding-academy.org/books-photos/${imgNumber}.jpg`,
-            language: "en",
-            listPrice: {
-                amount: utilService.getRandomIntInclusive(1, 300),
-                currencyCode: "€",
-                isOnSale: Math.random() > 0.7
-            }
-        }
-        books.push(book)
-    }
-    utilService.saveToStorage(BOOK_KEY, books)
+    newBooks = books
+    // const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+    // var imgNumber
+    // for (let i = 0; i < 20; i++) {
+    //     imgNumber = i + 1
+    //     const book = {
+    //         id: utilService.makeId(),
+    //         title: utilService.makeLorem(2),
+    //         subtitle: utilService.makeLorem(4),
+    //         authors: [
+    //             utilService.makeLorem(1)
+    //         ],
+    //         publishedDate: utilService.getRandomIntInclusive(1960, 2024),
+    //         description: utilService.makeLorem(150),
+    //         pageCount: utilService.getRandomIntInclusive(20, 600),
+    //         categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+    //         imgNum: imgNumber,
+    //         thumbnail: `http://coding-academy.org/newBooks-photos/${imgNumber}.jpg`,
+    //         language: "en",
+    //         listPrice: {
+    //             amount: utilService.getRandomIntInclusive(1, 300),
+    //             currencyCode: "€",
+    //             isOnSale: Math.random() > 0.7
+    //         }
+    //     }
+    //     newBooks.push(book)
+    // }
+    utilService.saveToStorage(BOOK_KEY, newBooks)
 }
